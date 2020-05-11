@@ -20,6 +20,19 @@ fi
 # Start supervisord
 supervisord -c /etc/supervisor/conf.d/supervisord.conf -l /tmp/supervisord.log
 
+# Composer
+if [ -f ${BASEHTML}/composer.json ]; then
+  composer install
+  RESULT=$?
+  if [ $RESULT -ne 0 ]; then
+    echo "composer install failed"
+    exit $RESULT
+  fi;
+  if [ -f "vendor/bin/drush" ]; then
+    export DRUSH="${PWD}/vendor/bin/drush"
+  fi;
+fi;
+
 # If there is no index.php, download drupal
 if [ ! -f ${DOCROOT}/index.php ]; then
   echo "**** No Drupal found. Downloading latest to ${DOCROOT}/ ****"
