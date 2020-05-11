@@ -11,7 +11,7 @@ RUN apt-get update; \
     mysql-client mysql-server apache2 pwgen vim-tiny mc iproute2 python-setuptools \
     unison netcat net-tools memcached nano libapache2-mod-php php php-cli php-common \
     php-gd php-json php-mbstring php-xdebug php-mysql php-opcache php-curl \
-    php-readline php-xml php-memcached php-oauth php-bcmath \
+    php-readline php-xml php-memcached php-oauth php-bcmath php-zip \
     postfix mailutils; \
   echo site: root >> /etc/aliases; \
   echo admin: root >> /etc/aliases; \
